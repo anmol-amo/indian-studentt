@@ -5,11 +5,11 @@ let years = (await dbQuery(
 let currentYear = addDropdown('År', years, 2024);
 
 addMdToPage(`
-  ## Medeltemperaturer i Malmö ${currentYear}
+  ## Medeltemperaturer i Malmö ${ currentYear }
 `);
 
 let dataForChart = await dbQuery(
-  `SELECT monthNameShort, temperatureC FROM dataWithMonths WHERE year = '${currentYear}'`
+  `SELECT monthNameShort, temperatureC FROM dataWithMonths WHERE year = '${ currentYear }'`
 );
 
 drawGoogleChart({
@@ -22,13 +22,13 @@ drawGoogleChart({
     pointSize: 5,
     pointShape: 'circle',
     vAxis: { format: '# °C' },
-    title: `Medeltemperatur per månad i Malmö ${currentYear} (°C)`
+    title: `Medeltemperatur per månad i Malmö ${ currentYear } (°C)`
   }
 });
 
 // the same db query as before, but with the long month names
 let dataForTable = await dbQuery(
-  `SELECT monthName, temperatureC FROM dataWithMonths WHERE year = '${currentYear}'`
+  `SELECT monthName, temperatureC FROM dataWithMonths WHERE year = '${ currentYear }'`
 );
 
 tableFromData({
