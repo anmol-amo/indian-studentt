@@ -26,3 +26,19 @@ WHERE Depression IS NOT NULL
   AND Financial_Stress IS NOT NULL
 GROUP BY Financial_Stress
 ORDER BY avg_depression DESC;
+SELECT id,
+  Depression,
+  CGPA,
+  "Family_History_of_Mental_Illness"
+FROM students
+WHERE "Family_History_of_Mental_Illness" = 'Yes';
+-- students with family history of mental illness and their CGPA but its not directly
+-- proportional to depression
+SELECT id,
+  CGPA,
+  "Family_History_of_Mental_Illness",
+  Depression
+FROM students
+WHERE "Family_History_of_Mental_Illness" = 'Yes'
+ORDER BY CGPA DESC
+LIMIT 10;
