@@ -8,6 +8,25 @@ WHERE Depression = 1,
 FROM students
 WHERE City = 'Visakhapatnam'
   AND Depression = 1;
+-- if students with depression and their CGPA
+SELECT "Sleep_Duration",
+  AVG(CGPA) AS avg_cgpa,
+  COUNT(*) AS num_students
+FROM students
+GROUP BY "Sleep_Duration"
+ORDER BY avg_cgpa DESC;
+-- how students sleep duration is related to their CGPA
+SELECT CASE
+    WHEN "Sleep_Duration" < 5 THEN 'Less than 5 hrs'
+    WHEN "Sleep_Duration" BETWEEN 5 AND 6 THEN '6 hrs'
+    WHEN "Sleep_Duration" BETWEEN 6 AND 8 THEN '8 hrs'
+    ELSE 'More than 8 hrs'
+  END AS sleep_group,
+  AVG(CGPA) AS avg_cgpa,
+  COUNT(*) AS students
+FROM students
+GROUP BY sleep_group
+ORDER BY avg_cgpa DESC;
 --how many students have unhealthy eating habits and related to depresion
 SELECT Dietary_Habits,
   COUNT(*) AS total_students,
