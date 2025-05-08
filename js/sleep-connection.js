@@ -1,7 +1,6 @@
 // Rubrik
 addMdToPage(`
-  # **Diskussion**
-  ## *Resultaten visar att:*
+
   ## Samband mellan sömn och välbefinnande
   Diagrammet visar CGPA, ekonomisk stress och depression per sömngrupp.
 `);
